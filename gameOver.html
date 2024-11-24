@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @media (min-width: 601px) {
+
+        html,
+        body {
+            background-image: linear-gradient(to right, red, yellow, yellow, red);
+        }
+
+        p {
+            font: 26px Arial, sans-serif;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        button {
+            padding: 10px;
+            background-color: white;
+            font-size: 18px;
+            margin: 0 auto;
+            padding: 10px;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 600px) {
+
+        html,
+        body {
+            background-image: linear-gradient(to right, yellow, red, red, yellow);
+        }
+
+        p {
+            font: 13px Arial, sans-serif;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        button {
+            padding: 5px;
+            background-color: white;
+            font-size: 9px;
+            margin: 0 auto;
+            padding: 5px;
+            text-align: center;
+        }
+    }
+
+    h1 {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    body {
+        text-align: center;
+    }
+</style>
+<script>
+    function endGame() {
+        var score = parseInt(localStorage.getItem('score'));
+        console.log(score);
+        var scoreMessage = " Your final score was " + score + "!";
+        winMessage = document.getElementById("endMessage");
+        if (score < 33) {
+            winMessage.innerHTML = "Wow, great job! You must have an amazing memory or insane luck to be able to match them so quickly!" + scoreMessage;
+        } else if (score < 49) {
+            winMessage.innerHTML = "Not bad. You didn't take too many moves to match them. Maybe you can do even better next time around!" + scoreMessage;
+        } else {
+            winMessage.innerHTML = "You took forever to match these! Better luck next time! Or not!" + scoreMessage;
+        }
+    }
+
+    function playAgain() {
+        window.location.href = "matching.html";
+    }
+</script>
+
+<body onload="endGame();">
+    <p id="endMessage"> </p>
+    <button onclick="playAgain();"> Play Again </button>
+</body>
+
+</html>
